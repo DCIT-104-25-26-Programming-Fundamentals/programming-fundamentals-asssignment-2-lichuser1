@@ -46,8 +46,80 @@
 //
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
-// =============================================================================
-
 #include <iostream>
 using namespace std;
+
+void displayFibonacci(int terms)
+{
+    int fibArr[100];
+    fibArr[0] = 0;
+    fibArr[1] = 1;
+
+    for (int idx = 2; idx < terms; idx++)
+    {
+        fibArr[idx] = fibArr[idx - 1] + fibArr[idx - 2];
+    }
+
+    cout << "Fibonacci sequence: ";
+    for (int idx = 0; idx < terms; idx++)
+    {
+        cout << fibArr[idx] << " ";
+    }
+    cout << endl;
+}
+
+bool checkFibonacci(int val)
+{
+    int x = 0;
+    int y = 1;
+
+    while (x <= val)
+    {
+        if (x == val)
+        {
+            return true;
+        }
+        int nextVal = x + y;
+        x = y;
+        y = nextVal;
+    }
+
+    return false;
+}
+
+int main()
+{
+    // Part A: Print the First N Terms
+    int termCount;
+    cout << "How many terms? ";
+    cin >> termCount;
+
+    if (termCount <= 0)
+    {
+        cout << "Error: Number of terms must be a positive integer." << endl;
+    }
+    else
+    {
+        displayFibonacci(termCount);
+    }
+
+    // Part B: Check if a Number Belongs to the Sequence
+    int inputNum;
+    cout << "Enter a number to check: ";
+    cin >> inputNum;
+
+    bool isFibResult = checkFibonacci(inputNum);
+    if (isFibResult)
+    {
+        cout << inputNum << " is a Fibonacci number." << endl;
+    }
+    else
+    {
+        cout << inputNum << " is NOT a Fibonacci number." << endl;
+    }
+
+    return 0;
+}
+// =============================================================================
+
 

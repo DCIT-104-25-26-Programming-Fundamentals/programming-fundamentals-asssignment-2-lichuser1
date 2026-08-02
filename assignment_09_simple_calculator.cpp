@@ -66,10 +66,125 @@
 
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
-// =============================================================================
-
 #include <iostream>
 #include <iomanip>
 #include <cmath>
 using namespace std;
+
+double add(double a, double b)
+{
+    return a + b;
+}
+
+double subtract(double a, double b)
+{
+    return a - b;
+}
+
+double multiply(double a, double b)
+{
+    return a * b;
+}
+
+double divide(double a, double b)
+{
+    return a / b;
+}
+
+int mod(int a, int b)
+{
+    return a % b;
+}
+
+double exponent(double base, double exp)
+{
+    return pow(base, exp);
+}
+
+void showMenu()
+{
+    cout << "\n============================" << endl;
+    cout << "     SIMPLE CALCULATOR" << endl;
+    cout << "============================" << endl;
+    cout << "1. Addition" << endl;
+    cout << "2. Subtraction" << endl;
+    cout << "3. Multiplication" << endl;
+    cout << "4. Division" << endl;
+    cout << "5. Modulus" << endl;
+    cout << "6. Exponentiation" << endl;
+    cout << "7. Quit" << endl;
+}
+
+int main()
+{
+    cout << fixed << setprecision(2);
+
+    int choice;
+    bool running = true;
+
+    while (running)
+    {
+        showMenu();
+        cout << "Select an operation (1-7): ";
+        cin >> choice;
+
+        if (choice == 7)
+        {
+            cout << "Goodbye!" << endl;
+            running = false;
+            continue;
+        }
+
+        if (choice < 1 || choice > 7)
+        {
+            cout << "Error: Invalid choice. Please select 1-7." << endl;
+            continue;
+        }
+
+        double a, b;
+        cout << "Enter first number : ";
+        cin >> a;
+        cout << "Enter second number: ";
+        cin >> b;
+
+        switch (choice)
+        {
+        case 1:
+            cout << "Result: " << a << " + " << b << " = " << add(a, b) << endl;
+            break;
+        case 2:
+            cout << "Result: " << a << " - " << b << " = " << subtract(a, b) << endl;
+            break;
+        case 3:
+            cout << "Result: " << a << " * " << b << " = " << multiply(a, b) << endl;
+            break;
+        case 4:
+            if (b == 0)
+            {
+                cout << "Error: Cannot divide by zero." << endl;
+            }
+            else
+            {
+                cout << "Result: " << a << " / " << b << " = " << divide(a, b) << endl;
+            }
+            break;
+        case 5:
+            if ((int)b == 0)
+            {
+                cout << "Error: Cannot divide by zero." << endl;
+            }
+            else
+            {
+                cout << "Result: " << (int)a << " % " << (int)b << " = " << mod((int)a, (int)b) << endl;
+            }
+            break;
+        case 6:
+            cout << "Result: " << a << " ^ " << b << " = " << exponent(a, b) << endl;
+            break;
+        }
+    }
+
+    return 0;
+}
+// =============================================================================
 
